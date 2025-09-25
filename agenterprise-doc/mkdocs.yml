@@ -51,7 +51,7 @@ nav:
   - AI Generator: 
       - Overview: generator/index.md
 
-  - Installation: installation.md
+  - Installation: innstallation/installation.md
 extra:
   social:
     - icon: fontawesome/brands/github

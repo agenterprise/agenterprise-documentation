@@ -2,7 +2,7 @@ site_name: Agenterprise - The AI Way to Model Driven Software Development
 site_description: Documentation for Agenterprise, the AI way to model driven software development.
 site_author: Michael Vonrüden
 site_url: https://www.agenterprise.ai
-repo_url: https://github.com/agenterprise/ai-layer-pydanticai
+repo_url: https://github.com/agenterprise/agenterprise.git
 
 
 theme:

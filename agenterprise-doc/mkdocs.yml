@@ -41,15 +41,15 @@ theme:
     - 404.html
 nav:
   - Home: index.md
-#  - AI DSL:
-#      - Overview: dsl/index.md 
-#      - Architecture Layer: dsl/architecture-layer.md
-#      - Infrastructure Layer: dsl/infrastruture-layer.md
-#      - AI Functional Layer: dsl/ai-functional-layer.md
+  - AI DSL:
+      - Overview: dsl/index.md 
+      - Architecture Layer: dsl/architecture-layer.md
+      - Infrastructure Layer: dsl/infrastruture-layer.md
+      - AI Functional Layer: dsl/ai-functional-layer.md
 #      - Serivce Layer: dsl/service-layer.md
 
-#  - AI Generator: 
-#      - Overview: generator/index.md
+  - AI Generator: 
+      - Overview: generator/index.md
 
 #  - Installation: innstallation/installation.md
 extra:

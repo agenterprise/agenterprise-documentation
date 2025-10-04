@@ -6,7 +6,7 @@ The Agenterprise DSL is structured in distinct layers as levels, each representi
 
 ---
 
-**1. Environment Level**
+## 1. Environment Level
 Defines the overall AI environment or context for the system.
 
 ```dsl
@@ -15,37 +15,43 @@ ai_environment "AgentMicroservice"
 
 ---
 
-**2. Architecture Level**
+### 2.1 Architecture Level
 Describes the architecture, including environment IDs and technology stacks for services and AI components.
 
 ```dsl
 architecture{
-    envid = "c672da0bd68f41f1b77442524cfa48c4"
-    service-techstack = aiurn:techstack:github:www.github.com:agenterprise:service-layer-fastapi-base
-    ai-techstack = aiurn:techstack:github:www.github.com:agenterprise:ai-layer-pydanticai
+    envid = "fb98001a0ce94c44ad091de3d2e78164"
+    service-techlayer = aiurn:techlayer:local:..:templates:service-layer-fastapi-base
+    ai-techlayer = aiurn:techlayer:local:..:templates:ai-layer-pydanticai
+        
 }
 ```
+Read on at [Architecture Layer](architecture-layer.md)
 
 ---
 
-**3. Infrastructure Level**
+### 2.2 Infrastructure Level
 Specifies infrastructure resources such as LLMs, providers, endpoints, and versions.
 
 ```dsl
 infrastructure {
     llm "My LLM" {
-        uid = aiurn:model:llm:geepeetee
-        provider = aiurn:provider:azure
+        uid = aiurn:model:id:geepeetee
+        provider = aiurn:model:provider:azure 
         model = "gpt-4o"
-        endpoint = "https://gpt-mvo-sweden.openai.azure.com/openai/deployments/gpt-4o/chat/completions"
+        endpoint = "https://any.openai.azure.com/"
         version = "2025-01-01-preview"
+        aiurn:var:temperature = 0.7
+        aiurn:var:costid = "ewe3949" 
+        aiurn:var:hello = True 
     }
 }
 ```
+Read on at [Infrastructure Layer](infrastruture-layer.md)
 
 ---
 
-**4. Functional Level**
+### 2.3 AI Functional Level
 Defines agents, tools, and their properties, including prompts, references, variables, and endpoints.
 
 ```dsl
@@ -53,32 +59,60 @@ functional{
     agent "Cook" {
         uid = aiurn:agent:cook
         namespace = aiurn:ns:janes_diner:kitchen
-        systemprompt = "You're a four star rated metre"
-        llmref = aiurn:model:llm:geepeetee 
-        toolref = aiurn:tool:cooking:v1      
-        aiurn:var:name = "Jane Smith"
-        aiurn:var:role = "manager"
+        systemprompt = "You're a four star rated metre working at https://my.littlerestaurant.example"
+        llmref = aiurn:model:id:geepeetee 
+        toolref = aiurn:tool:cooking:v1
+        toolref =aiurn:tool:crawler:v2
+        aiurn:var:name = "Max Mustermann"
+        aiurn:var:role = "waiter"
         aiurn:var:lifeycle = "permanent"
-        aiurn:var:event = "onRestaurantOpening" 
+        aiurn:var:events = "onRestaurantOpening"
+        
     }
+
     agent "Waiter" {
         uid = aiurn:agent:waiter
-        namespace = aiurn:ns:janes_diner:guestroom
-        systemprompt = "Du bist ein freundlicher und aufmerksamer Kellner"
-        llmref = aiurn:model:llm:geepeetee 
+        namespace = aiurn:ns:kkweinhauschen:guestroom
+        systemprompt = "Du bist ein freundlicher und aufmerksamer Oberkellner und managed das Restaurant https://my.littlerestaurant.example"
+        llmref = aiurn:model:id:geepeetee 
+        toolref = aiurn:tool:crawler:v2
+        toolref = aiurn:tool:bmi:v1
         aiurn:var:name = "Max Mustermann"
         aiurn:var:role = "waiter"
         aiurn:var:lifeycle = "permanent"
         aiurn:var:events = "onRestaurantOpening"
     }
-    tool "CookingApi" {
-        uid = aiurn:tool:cooking:v1
-        endpoint = "http://localhost:8000/mcp"
-        type = aiurn:tooltype:mcp
-        description = "Tool for finding good cooking combinations"
+    tool "bmicalculator" {
+        uid = aiurn:tool:bmi:v1
+        in = aiurn:toolvar:weight # "The weight of the person"
+        in = aiurn:toolvar:height # "The heigt of ther person"
+        out = aiurn:toolvar:bmi # "The calculated BMI (Body Mass Index)"
+        endpoint = "lambda weight, height: round(weight / (height ** 2), 2)"
+        type = aiurn:tooltype:code
+        description = "Tool calculating the bmi by weight and height"
+        
     }
+    tool "Mealdb" {
+        uid = aiurn:tool:cooking:v1
+        in = aiurn:toolvar:meal # "A meal"
+        out = aiurn:toolvar:description # "A listing about ingridients"
+        endpoint = "https://www.themealdb.com/api/json/v1/1/search.php?s=aiurn:tool:input:meal"
+        type = aiurn:tooltype:ressource
+        description = "Tool for finding a meal deescription."
+        
+    }
+        tool "Webcrawler" {
+        uid = aiurn:tool:crawler:v2
+        endpoint = "https://remote.mcpservers.org/fetch/mcp"
+        type = aiurn:tooltype:mcp
+        description = "Tool for fetching webpages"
+        
+    }
+
 }
 ```
+
+Read on at [AI Functional Layer](ai-functional-layer.md)
 
 ---
 

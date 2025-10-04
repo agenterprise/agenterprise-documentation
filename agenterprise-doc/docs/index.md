@@ -13,13 +13,12 @@
   <style>
     :root {
       --color-bg: #000;
-      --color-text: #39ff14;
-      --color-border: #39ff14;
+      --color-text: #29c20eff;
+      --color-border: #ee6509ff;
       --color-accent: #00cc66;
     }
 
     .    {
-      background-color: var(--color-bg);
       color: var(--color-text);
       font-family: 'Press Start 2P', monospace;
       font-size: 14px;
@@ -37,7 +36,6 @@
       max-width: 800px;
       border: 2px solid var(--color-border);
       border-radius: 12px;
-      background-color: var(--color-bg);
       padding: 32px;
       box-shadow: 0 0 20px var(--color-accent);
       overflow-x: auto;
@@ -106,6 +104,8 @@
       to { opacity: 1; transform: translateY(0); }
     }
   </style>
+
+  <br/>
 # Still here?
 NOTE: Agenterprise is currently in Alpha Phase
 

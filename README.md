@@ -8,4 +8,7 @@ cd agenterprise-doc/
 mkdocs serve
 ```
 # Building site
+```bash
+cd agenterprise-doc/
 mkdocs build -d ../docs
+```

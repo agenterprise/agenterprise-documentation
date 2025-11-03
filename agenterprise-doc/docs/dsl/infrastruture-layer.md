@@ -1,3 +1,7 @@
+---
+hide:
+  - toc
+---
 # Infrastructure Layer
 
 ## LLM (Large Language Model)

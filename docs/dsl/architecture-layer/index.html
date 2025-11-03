@@ -52,6 +52,8 @@
       
     
     
+      <link rel="stylesheet" href="../../stylesheet/extra.css">
+    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -293,6 +295,8 @@
         <div class="md-main__inner md-grid">
           
             
+              
+                
               
               <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
                 <div class="md-sidebar__scrollwrap">
@@ -546,6 +550,29 @@
   
   
     <li class="md-nav__item">
+      <a href="../data-layer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data Layer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../ai-functional-layer/" class="md-nav__link">
         
   
@@ -648,7 +675,9 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" hidden>
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -712,6 +741,8 @@
               <article class="md-content__inner md-typeset">
                 
                   
+  
+
 
 
   
@@ -720,14 +751,14 @@
 
 <h1 id="architecture-layer">Architecture Layer</h1>
 <h2 id="architecture">Architecture</h2>
-<p>Example</p>
-<pre><code class="language-dsl"> architecture{
+<p>Example
+<div class="highlight"><pre><span></span><code> architecture{
     envid = &quot;fb98001a0ce94c44ad091de3d2e78164&quot;
     service-techlayer = aiurn:techlayer:local:..:templates:service-layer-fastapi-base
     ai-techlayer = aiurn:techlayer:local:..:templates:ai-layer-pydanticai
 
 }
-</code></pre>
+</code></pre></div></p>
 <h3 id="specs">Specs</h3>
 <table>
 <thead>
@@ -777,8 +808,13 @@
 
 
 
+  
+  
 
 
+
+
+  
 
 
 

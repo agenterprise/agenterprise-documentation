@@ -52,6 +52,8 @@
       
     
     
+      <link rel="stylesheet" href="../stylesheet/extra.css">
+    
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -294,6 +296,8 @@
           
             
               
+                
+              
               <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
@@ -481,6 +485,29 @@
   
   
     <li class="md-nav__item">
+      <a href="data-layer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data Layer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="ai-functional-layer/" class="md-nav__link">
         
   
@@ -583,7 +610,9 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" hidden>
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -606,6 +635,8 @@
               <article class="md-content__inner md-typeset">
                 
                   
+  
+
 
 
   
@@ -614,27 +645,28 @@
 
 <h1 id="the-agenterpriseai-dsl">The Agenterprise.ai DSL</h1>
 <h1 id="dsl-levels-overview">DSL Levels Overview</h1>
+<h2 id="version-0111">Version 0.1.11</h2>
 <p>The Agenterprise DSL is structured in distinct layers as levels, each representing a core aspect of agentic, model-driven enterprise systems. The following example illustrates the main levels:</p>
 <hr />
 <h2 id="1-environment-level">1. Environment Level</h2>
 <p>Defines the overall AI environment or context for the system.</p>
-<pre><code class="language-dsl">ai_environment &quot;AgentMicroservice&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code>ai_environment &quot;AgentMicroservice&quot;
+</code></pre></div>
 <hr />
 <h3 id="21-architecture-level">2.1 Architecture Level</h3>
 <p>Describes the architecture, including environment IDs and technology stacks for services and AI components.</p>
-<pre><code class="language-dsl">architecture{
+<p><div class="highlight"><pre><span></span><code>architecture{
     envid = &quot;fb98001a0ce94c44ad091de3d2e78164&quot;
-    service-techlayer = aiurn:techlayer:local:..:templates:service-layer-fastapi-base
-    ai-techlayer = aiurn:techlayer:local:..:templates:ai-layer-pydanticai
-
+    service-techlayer = aiurn:techlayer:github:www.github.com:agenterprise:service-layer-fastapi-base
+    ai-techlayer = aiurn:techlayer:github:www.github.com:agenterprise:ai-layer-pydanticai
+    data-techlayer = aiurn:techlayer:github:www.github.com:agenterprise:data-layer-pydantic     
 }
-</code></pre>
-<p>Read on at <a href="architecture-layer/">Architecture Layer</a></p>
+</code></pre></div>
+Read on at <a href="architecture-layer/">Architecture Layer</a></p>
 <hr />
 <h3 id="22-infrastructure-level">2.2 Infrastructure Level</h3>
 <p>Specifies infrastructure resources such as LLMs, providers, endpoints, and versions.</p>
-<pre><code class="language-dsl">infrastructure {
+<p><div class="highlight"><pre><span></span><code>infrastructure {
     llm &quot;My LLM&quot; {
         uid = aiurn:model:id:geepeetee
         provider = aiurn:model:provider:azure 
@@ -646,67 +678,92 @@
         aiurn:var:hello = True 
     }
 }
-</code></pre>
-<p>Read on at <a href="infrastruture-layer/">Infrastructure Layer</a></p>
+</code></pre></div>
+Read on at <a href="infrastruture-layer/">Infrastructure Layer</a></p>
 <hr />
-<h3 id="23-ai-functional-level">2.3 AI Functional Level</h3>
+<h3 id="23-datalayer">2.3 Datalayer</h3>
+<p>Defines Data-Entities used for functional layer</p>
+<p><div class="highlight"><pre><span></span><code>data{
+    entity &quot;Restaurant Query&quot; {
+        uid = aiurn:entity:id:restaurantquery
+        element = aiurn:entity:var:question -&gt; TEXT # &quot;The question to the metre&quot;
+    }
+    entity &quot;Restaurant Answer&quot; {
+        uid = aiurn:entity:id:restaurantanswer 
+        element = aiurn:entity:var:answer -&gt; TEXT # &quot;The answer of the metre&quot;
+        element = aiurn:entity:var:restaurant -&gt; aiurn:entity:id:restaurant  # &quot;The restaurant of the metre&quot;
+    }
+    entity &quot;Restaurant&quot; {
+        uid = aiurn:entity:id:restaurant 
+        element = aiurn:entity:var:name -&gt; TEXT # &quot;The name of the restaurant&quot;
+        element = aiurn:entity:var:street -&gt; TEXT # &quot;The street where the restaurant is located&quot;
+        element = aiurn:entity:var:city -&gt; TEXT # &quot;The city where the restaurant is located&quot;
+        element = aiurn:entity:var:rating -&gt; NUMBER # &quot;The rating of the restaurant&quot;
+    }
+
+    entity &quot;BMI Query&quot; {
+        uid = aiurn:entity:id:bmiquery
+        element = aiurn:entity:var:weight -&gt; NUMBER # &quot;The current weight of the person&quot;
+        element = aiurn:entity:var:height -&gt; NUMBER # &quot;The current height of the person in meters&quot;
+    }
+
+    entity &quot;BMI Result&quot; {
+        uid = aiurn:entity:id:bmiresult
+        element = aiurn:entity:var:bmi -&gt; NUMBER # &quot;The calcualted bmi of the person&quot;
+    }
+}
+</code></pre></div>
+Read on at <a href="data-layer/">Data Layer</a></p>
+<h3 id="24-ai-functional-level">2.4 AI Functional Level</h3>
 <p>Defines agents, tools, and their properties, including prompts, references, variables, and endpoints.</p>
-<pre><code class="language-dsl">functional{
+<div class="highlight"><pre><span></span><code>functional{
     agent &quot;Cook&quot; {
-        uid = aiurn:agent:cook
-        namespace = aiurn:ns:janes_diner:kitchen
-        systemprompt = &quot;You're a four star rated metre working at https://my.littlerestaurant.example&quot;
-        llmref = aiurn:model:id:geepeetee 
-        toolref = aiurn:tool:cooking:v1
-        toolref =aiurn:tool:crawler:v2
-        aiurn:var:name = &quot;Max Mustermann&quot;
-        aiurn:var:role = &quot;waiter&quot;
-        aiurn:var:lifeycle = &quot;permanent&quot;
-        aiurn:var:events = &quot;onRestaurantOpening&quot;
+            uid = aiurn:agent:id:cook
+            namespace = aiurn:ns:moewe:kitchen
+            systemprompt = &quot;You&#39;re a four star rated metre working at restaurant https://moewe.agenterprise.ai/&quot;
+            llmref = aiurn:model:id:geepeetee 
+            toolref = aiurn:tool:id:crawler:v2
+            in = aiurn:entity:id:restaurantquery
+            out = aiurn:entity:id:restaurantanswer 
+            aiurn:global:var:name = &quot;Max Mustermann&quot;
+            aiurn:global:var:role = &quot;cook&quot;
+            aiurn:global:var:lifeycle = &quot;permanent&quot;
+            aiurn:global:var:events = &quot;onRestaurantOpening&quot;
 
-    }
+        }
 
-    agent &quot;Waiter&quot; {
-        uid = aiurn:agent:waiter
-        namespace = aiurn:ns:kkweinhauschen:guestroom
-        systemprompt = &quot;Du bist ein freundlicher und aufmerksamer Oberkellner und managed das Restaurant https://my.littlerestaurant.example&quot;
-        llmref = aiurn:model:id:geepeetee 
-        toolref = aiurn:tool:crawler:v2
-        toolref = aiurn:tool:bmi:v1
-        aiurn:var:name = &quot;Max Mustermann&quot;
-        aiurn:var:role = &quot;waiter&quot;
-        aiurn:var:lifeycle = &quot;permanent&quot;
-        aiurn:var:events = &quot;onRestaurantOpening&quot;
-    }
-    tool &quot;bmicalculator&quot; {
-        uid = aiurn:tool:bmi:v1
-        in = aiurn:toolvar:weight # &quot;The weight of the person&quot;
-        in = aiurn:toolvar:height # &quot;The heigt of ther person&quot;
-        out = aiurn:toolvar:bmi # &quot;The calculated BMI (Body Mass Index)&quot;
-        endpoint = &quot;lambda weight, height: round(weight / (height ** 2), 2)&quot;
-        type = aiurn:tooltype:code
-        description = &quot;Tool calculating the bmi by weight and height&quot;
+        agent &quot;Waiter&quot; {
+            uid = aiurn:agent:id:waiter
+            namespace = aiurn:ns:moewe:guestroom
+            systemprompt = &quot;Du bist eine freundliche und aufmerksame Serviekraft und arbeitest im  Restaurant https://moewe.agenterprise.ai/&quot;
+            llmref = aiurn:model:id:geepeetee 
+            toolref = aiurn:tool:id:bmi:v1
+            toolref = aiurn:tool:id:crawler:v2
+            aiurn:global:var:name = &quot;Max Mustermann&quot;
+            aiurn:global:var:role = &quot;waiter&quot;
+            aiurn:global:var:lifeycle = &quot;permanent&quot;
+            aiurn:global:var:events = &quot;onRestaurantOpening&quot;
+        }
+        tool &quot;bmicalculator&quot; {
+            uid = aiurn:tool:id:bmi:v1
+            in = aiurn:entity:id:bmiquery
+            out = aiurn:entity:id:bmiresult
+            endpoint = &quot;lambda bmiquery: ToolOutputType(bmi=round(bmiquery.weight / (bmiquery.height ** 2), 2))&quot;
+            type = aiurn:tooltype:code
+            description = &quot;Tool calculating the bmi by weight and height&quot;
 
-    }
-    tool &quot;Mealdb&quot; {
-        uid = aiurn:tool:cooking:v1
-        in = aiurn:toolvar:meal # &quot;A meal&quot;
-        out = aiurn:toolvar:description # &quot;A listing about ingridients&quot;
-        endpoint = &quot;https://www.themealdb.com/api/json/v1/1/search.php?s=aiurn:tool:input:meal&quot;
-        type = aiurn:tooltype:ressource
-        description = &quot;Tool for finding a meal deescription.&quot;
+        }
 
-    }
-        tool &quot;Webcrawler&quot; {
-        uid = aiurn:tool:crawler:v2
-        endpoint = &quot;https://remote.mcpservers.org/fetch/mcp&quot;
-        type = aiurn:tooltype:mcp
-        description = &quot;Tool for fetching webpages&quot;
+         tool &quot;Webcrawler&quot; {
+            uid = aiurn:tool:id:crawler:v2
+            endpoint = &quot;https://remote.mcpservers.org/fetch/mcp&quot;
+            type = aiurn:tooltype:mcp
+            description = &quot;Tool for fetching webpages&quot;
 
-    }
+        }
 
 }
-</code></pre>
+</code></pre></div>
 <p>Read on at <a href="ai-functional-layer/">AI Functional Layer</a></p>
 <hr />
 <p>Each level in the DSL enables clear separation of concerns, making it possible to model, generate, and manage complex agentic enterprise systems in a technology-neutral and flexible way.</p>
@@ -717,8 +774,13 @@
 
 
 
+  
+  
 
 
+
+
+  
 
 
 

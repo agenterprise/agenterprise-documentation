@@ -1,6 +1,11 @@
+---
+hide:
+  - toc
+---
 # The Agenterprise.ai DSL
 
-# DSL Levels Overview
+# DSL Levels Overview 
+## Version 0.1.11
 
 The Agenterprise DSL is structured in distinct layers as levels, each representing a core aspect of agentic, model-driven enterprise systems. The following example illustrates the main levels:
 
@@ -21,9 +26,9 @@ Describes the architecture, including environment IDs and technology stacks for 
 ```dsl
 architecture{
     envid = "fb98001a0ce94c44ad091de3d2e78164"
-    service-techlayer = aiurn:techlayer:local:..:templates:service-layer-fastapi-base
-    ai-techlayer = aiurn:techlayer:local:..:templates:ai-layer-pydanticai
-        
+    service-techlayer = aiurn:techlayer:github:www.github.com:agenterprise:service-layer-fastapi-base
+    ai-techlayer = aiurn:techlayer:github:www.github.com:agenterprise:ai-layer-pydanticai
+    data-techlayer = aiurn:techlayer:github:www.github.com:agenterprise:data-layer-pydantic     
 }
 ```
 Read on at [Architecture Layer](architecture-layer.md)
@@ -51,63 +56,91 @@ Read on at [Infrastructure Layer](infrastruture-layer.md)
 
 ---
 
-### 2.3 AI Functional Level
+### 2.3 Datalayer
+Defines Data-Entities used for functional layer
+
+```dsl
+data{
+    entity "Restaurant Query" {
+        uid = aiurn:entity:id:restaurantquery
+        element = aiurn:entity:var:question -> TEXT # "The question to the metre"
+    }
+    entity "Restaurant Answer" {
+        uid = aiurn:entity:id:restaurantanswer 
+        element = aiurn:entity:var:answer -> TEXT # "The answer of the metre"
+        element = aiurn:entity:var:restaurant -> aiurn:entity:id:restaurant  # "The restaurant of the metre"
+    }
+    entity "Restaurant" {
+        uid = aiurn:entity:id:restaurant 
+        element = aiurn:entity:var:name -> TEXT # "The name of the restaurant"
+        element = aiurn:entity:var:street -> TEXT # "The street where the restaurant is located"
+        element = aiurn:entity:var:city -> TEXT # "The city where the restaurant is located"
+        element = aiurn:entity:var:rating -> NUMBER # "The rating of the restaurant"
+    }
+
+    entity "BMI Query" {
+        uid = aiurn:entity:id:bmiquery
+        element = aiurn:entity:var:weight -> NUMBER # "The current weight of the person"
+        element = aiurn:entity:var:height -> NUMBER # "The current height of the person in meters"
+    }
+
+    entity "BMI Result" {
+        uid = aiurn:entity:id:bmiresult
+        element = aiurn:entity:var:bmi -> NUMBER # "The calcualted bmi of the person"
+    }
+}
+```
+Read on at [Data Layer](data-layer.md)
+
+### 2.4 AI Functional Level
 Defines agents, tools, and their properties, including prompts, references, variables, and endpoints.
 
 ```dsl
 functional{
     agent "Cook" {
-        uid = aiurn:agent:cook
-        namespace = aiurn:ns:janes_diner:kitchen
-        systemprompt = "You're a four star rated metre working at https://my.littlerestaurant.example"
-        llmref = aiurn:model:id:geepeetee 
-        toolref = aiurn:tool:cooking:v1
-        toolref =aiurn:tool:crawler:v2
-        aiurn:var:name = "Max Mustermann"
-        aiurn:var:role = "waiter"
-        aiurn:var:lifeycle = "permanent"
-        aiurn:var:events = "onRestaurantOpening"
-        
-    }
+            uid = aiurn:agent:id:cook
+            namespace = aiurn:ns:moewe:kitchen
+            systemprompt = "You're a four star rated metre working at restaurant https://moewe.agenterprise.ai/"
+            llmref = aiurn:model:id:geepeetee 
+            toolref = aiurn:tool:id:crawler:v2
+            in = aiurn:entity:id:restaurantquery
+            out = aiurn:entity:id:restaurantanswer 
+            aiurn:global:var:name = "Max Mustermann"
+            aiurn:global:var:role = "cook"
+            aiurn:global:var:lifeycle = "permanent"
+            aiurn:global:var:events = "onRestaurantOpening"
+          
+        }
 
-    agent "Waiter" {
-        uid = aiurn:agent:waiter
-        namespace = aiurn:ns:kkweinhauschen:guestroom
-        systemprompt = "Du bist ein freundlicher und aufmerksamer Oberkellner und managed das Restaurant https://my.littlerestaurant.example"
-        llmref = aiurn:model:id:geepeetee 
-        toolref = aiurn:tool:crawler:v2
-        toolref = aiurn:tool:bmi:v1
-        aiurn:var:name = "Max Mustermann"
-        aiurn:var:role = "waiter"
-        aiurn:var:lifeycle = "permanent"
-        aiurn:var:events = "onRestaurantOpening"
-    }
-    tool "bmicalculator" {
-        uid = aiurn:tool:bmi:v1
-        in = aiurn:toolvar:weight # "The weight of the person"
-        in = aiurn:toolvar:height # "The heigt of ther person"
-        out = aiurn:toolvar:bmi # "The calculated BMI (Body Mass Index)"
-        endpoint = "lambda weight, height: round(weight / (height ** 2), 2)"
-        type = aiurn:tooltype:code
-        description = "Tool calculating the bmi by weight and height"
+        agent "Waiter" {
+            uid = aiurn:agent:id:waiter
+            namespace = aiurn:ns:moewe:guestroom
+            systemprompt = "Du bist eine freundliche und aufmerksame Serviekraft und arbeitest im  Restaurant https://moewe.agenterprise.ai/"
+            llmref = aiurn:model:id:geepeetee 
+            toolref = aiurn:tool:id:bmi:v1
+            toolref = aiurn:tool:id:crawler:v2
+            aiurn:global:var:name = "Max Mustermann"
+            aiurn:global:var:role = "waiter"
+            aiurn:global:var:lifeycle = "permanent"
+            aiurn:global:var:events = "onRestaurantOpening"
+        }
+        tool "bmicalculator" {
+            uid = aiurn:tool:id:bmi:v1
+            in = aiurn:entity:id:bmiquery
+            out = aiurn:entity:id:bmiresult
+            endpoint = "lambda bmiquery: ToolOutputType(bmi=round(bmiquery.weight / (bmiquery.height ** 2), 2))"
+            type = aiurn:tooltype:code
+            description = "Tool calculating the bmi by weight and height"
+            
+        }
         
-    }
-    tool "Mealdb" {
-        uid = aiurn:tool:cooking:v1
-        in = aiurn:toolvar:meal # "A meal"
-        out = aiurn:toolvar:description # "A listing about ingridients"
-        endpoint = "https://www.themealdb.com/api/json/v1/1/search.php?s=aiurn:tool:input:meal"
-        type = aiurn:tooltype:ressource
-        description = "Tool for finding a meal deescription."
-        
-    }
-        tool "Webcrawler" {
-        uid = aiurn:tool:crawler:v2
-        endpoint = "https://remote.mcpservers.org/fetch/mcp"
-        type = aiurn:tooltype:mcp
-        description = "Tool for fetching webpages"
-        
-    }
+         tool "Webcrawler" {
+            uid = aiurn:tool:id:crawler:v2
+            endpoint = "https://remote.mcpservers.org/fetch/mcp"
+            type = aiurn:tooltype:mcp
+            description = "Tool for fetching webpages"
+            
+        }
 
 }
 ```

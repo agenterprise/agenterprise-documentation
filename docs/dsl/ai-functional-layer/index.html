@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://www.agenterprise.ai/dsl/ai-functional-layer/">
       
       
-        <link rel="prev" href="../infrastruture-layer/">
+        <link rel="prev" href="../data-layer/">
       
       
         <link rel="next" href="../../generator/">
@@ -51,6 +51,8 @@
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
+    
+      <link rel="stylesheet" href="../../stylesheet/extra.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -294,6 +296,8 @@
           
             
               
+                
+              
               <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
@@ -454,6 +458,29 @@
   
   <span class="md-ellipsis">
     Infrastructure Layer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data-layer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data Layer
     
   </span>
   
@@ -663,7 +690,9 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" hidden>
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -742,6 +771,8 @@
               <article class="md-content__inner md-typeset">
                 
                   
+  
+
 
 
   
@@ -751,11 +782,11 @@
 <h1 id="ai-functional-layer">AI Functional Layer</h1>
 <p>This section covers the AI functional layer in the Agenterprise DSL. It describes how to define agents, their properties, prompts, references, and variables.</p>
 <h2 id="agent">Agent</h2>
-<p>Example</p>
-<pre><code class="language-dsl"> agent &quot;Cook&quot; {
+<p>Example
+<div class="highlight"><pre><span></span><code> agent &quot;Cook&quot; {
     uid = aiurn:agent:cook 
     namespace = aiurn:ns:janes_diner:kitchen
-    systemprompt = &quot;You're a four star rated metre working at https://my.littlerestaurant.example&quot;
+    systemprompt = &quot;You&#39;re a four star rated metre working at https://my.littlerestaurant.example&quot;
     llmref = aiurn:model:id:geepeetee 
     toolref = aiurn:tool:cooking:v1
     toolref = aiurn:tool:crawler:v2
@@ -765,7 +796,7 @@
     aiurn:var:events = &quot;onRestaurantOpening&quot;
 
 }
-</code></pre>
+</code></pre></div></p>
 <h3 id="specs">Specs</h3>
 <p>Give the Agent a name by assign a name to agent %MY_NAME% { ... }</p>
 <table>
@@ -817,8 +848,8 @@
 </tbody>
 </table>
 <h2 id="tool">Tool</h2>
-<p>Example:</p>
-<pre><code class="language-dsl">tool &quot;bmicalculator&quot; {
+<p>Example:
+<div class="highlight"><pre><span></span><code>tool &quot;bmicalculator&quot; {
     uid = aiurn:tool:bmi:v1
     in = aiurn:toolvar:weight # &quot;The weight of the person&quot;
     in = aiurn:toolvar:height # &quot;The heigt of ther person&quot;
@@ -828,7 +859,7 @@
     description = &quot;Tool calculating the bmi by weight and height&quot;
 
 }
-</code></pre>
+</code></pre></div></p>
 <h3 id="specs_1">Specs</h3>
 <p>Give the Tool a name by assign a name to tool %MY_NAME% { ... }</p>
 <table>
@@ -893,8 +924,13 @@
 
 
 
+  
+  
 
 
+
+
+  
 
 
 

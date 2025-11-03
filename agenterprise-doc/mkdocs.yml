@@ -45,8 +45,8 @@ nav:
       - Overview: dsl/index.md 
       - Architecture Layer: dsl/architecture-layer.md
       - Infrastructure Layer: dsl/infrastruture-layer.md
+      - Data Layer: dsl/data-layer.md
       - AI Functional Layer: dsl/ai-functional-layer.md
-#      - Serivce Layer: dsl/service-layer.md
 
   - AI Generator: 
       - Overview: generator/index.md
@@ -69,6 +69,17 @@ copyright: >
   Copyright &copy; 2025  Michael Vonrüden –
   <a href="#__consent">Change cookie settings</a>
 
+extra_css:
+  - stylesheet/extra.css
 plugins:
   - privacy
   - search
+
+markdown_extensions:
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - attr_list
+  - md_in_html

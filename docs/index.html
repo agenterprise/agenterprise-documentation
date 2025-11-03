@@ -50,6 +50,8 @@
       
     
     
+      <link rel="stylesheet" href="stylesheet/extra.css">
+    
     <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -341,6 +343,19 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="." class="md-nav__link md-nav__link--active">
         
   
@@ -352,6 +367,67 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ai-projects-with-anchors-and-wings" class="md-nav__link">
+    <span class="md-ellipsis">
+      AI projects with ⚓ anchors and 🪽 wings
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#anchors" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚓ Anchors
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wings" class="md-nav__link">
+    <span class="md-ellipsis">
+      🪽 Wings
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🪽 Wings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#about-agenterprise" class="md-nav__link">
+    <span class="md-ellipsis">
+      About Agenterprise
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -457,6 +533,29 @@
   
   <span class="md-ellipsis">
     Infrastructure Layer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dsl/data-layer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data Layer
     
   </span>
   
@@ -588,6 +687,56 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ai-projects-with-anchors-and-wings" class="md-nav__link">
+    <span class="md-ellipsis">
+      AI projects with ⚓ anchors and 🪽 wings
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#anchors" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚓ Anchors
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wings" class="md-nav__link">
+    <span class="md-ellipsis">
+      🪽 Wings
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🪽 Wings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#about-agenterprise" class="md-nav__link">
+    <span class="md-ellipsis">
+      About Agenterprise
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -606,119 +755,33 @@
 
 
 <h1 id="agenterprise">Agenterprise:  ⚓ + 🪽</h1>
-<div class="mybody">
-<main class="chat-container" role="main" aria-label="Atari Chat Terminal">
-    <header class="chat-header">== Give your AI project ⚓ anchors and 🪽 wings ==</header>
-
-    <div class="line user-line">Define clearly separated AI Envs with abstract DSL</div>
-    <div class="line bot-line">Generate techlayers in a framework/service intended way.</div>
-    <div class="line user-line">Build  custom layer on top of it</div>
-    <div class="line bot-line">Still here? Read on below .... </div>
-  </main>
-  </div>
-<style>
-    :root {
-      --color-bg: #000;
-      --color-text: #29c20eff;
-      --color-border: #ee6509ff;
-      --color-accent: #00cc66;
-    }
-
-    .    {
-      color: var(--color-text);
-      font-family: 'Press Start 2P', monospace;
-      font-size: 14px;
-      line-height: 1.8;
-      margin: 0;
-      padding: 20px;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      min-height: 100vh;
-    }
-
-    .chat-container {
-      width: 100%;
-      max-width: 800px;
-      border: 2px solid var(--color-border);
-      border-radius: 12px;
-      padding: 32px;
-      box-shadow: 0 0 20px var(--color-accent);
-      overflow-x: auto;
-      white-space: nowrap;
-    }
-
-    .chat-header {
-      text-align: center;
-      margin-bottom: 30px;
-      text-transform: uppercase;
-      border-bottom: 1px solid var(--color-border);
-      padding-bottom: 12px;
-      letter-spacing: 2px;
-      font-size: 16px;
-      color: var(--color-accent);
-      white-space: normal;
-    }
-
-    .line {
-      display: block;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      margin-bottom: 10px;
-    }
-
-    .user-line::before,
-    .bot-line::before {
-      display: inline-block;
-      min-width: 180px; /* vorher 130px — jetzt größerer Abstand */
-      margin-right: 20px; /* zusätzlicher Raum zwischen Label und Text */
-      text-align: right;
-      opacity: 0.8;
-    }
-
-    .user-line::before {
-      content: "[Enterprise Dev]";
-      color: var(--color-accent);
-    }
-
-    .bot-line::before {
-      content: "[Agenterprise.ai]";
-      color: var(--color-border);
-    }
-
-    @media (max-width: 600px) {
-      .chat-container {
-        padding: 20px;
-      }
-      .user-line::before,
-      .bot-line::before {
-        min-width: 120px;
-        margin-right: 12px;
-      }
-      body {
-        font-size: 12px;
-      }
-    }
-
-    .chat-container {
-      animation: fadeIn 0.8s ease-out;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  </style>
-
-<p><br/></p>
-<h1 id="still-here">Still here?</h1>
+<h2 id="ai-projects-with-anchors-and-wings">AI projects with ⚓ anchors and 🪽 wings</h2>
+<p><img alt="AI Generated comic with dialog. IT GUY: I want to define clearly separated AI Envs being able to change the architecture layers quickly! showing lost IT man who needs a solution for defining. Mr Agenterprise replies: Sounds like you want a DSL and a Generator? Why not try agenterprise.ai? " src="assets/images/comic.png" /></p>
+<h2 id="anchors">⚓ Anchors</h2>
+<p>In the DSL you provide you abstract AI Environment. A generator will generated a solid water proof baseline --&gt; the anchor ⚓</p>
+<h2 id="wings">🪽 Wings</h2>
+<p>Give you project wings by extending it without loosing  ability to adjust your dsl project and regenerate. --&gt;  the 🪽 Wings</p>
+<h3 id="about-agenterprise">About Agenterprise</h3>
 <p>NOTE: Agenterprise is currently in Alpha Phase</p>
 <ul>
 <li>Model-driven, agentic enterprise software meets GenAI</li>
 <li>Architecture decoupled from technology</li>
 <li>Liveline from PoC to Enterprise Setups</li>
-<li>Open source stability reduces technology and vendor logi</li>
+<li>
+<p>Open source stability reduces technology and vendor logi</p>
+</li>
+<li>
+<p>Set based design
+<pre class="mermaid"><code>graph LR
+  A[My AI Agent Env Idea] --&gt; A1[Authoring DSL];
+  A1 --&gt; B{Which Architecture to use?};
+  B --&gt;|Try out different techstacks| C{Extend the project with own code};
+  C --&gt; D[Develop and Debug];
+  D --&gt; B
+  D --&gt; D
+  D --&gt; A1
+  D --&gt; E[Deploy];</code></pre></p>
+</li>
 </ul>
 <p>Agenterprise is an open source project focused on model-driven software development for agentic enterprise architectures and beyond. The goal is to enable intelligent solutions that remain independent of specific libraries and frameworks, by decoupling architecture from technology choices.</p>
 <p>With Agenterprise's domain-specific language (DSL), you can describe your AI and agentic architectures in a technology-neutral way. This makes it possible to generate different tech stacks or service stacks from the same model, adapting flexibly to changing requirements or platforms.</p>

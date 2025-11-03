@@ -50,6 +50,8 @@
       
     
     
+      <link rel="stylesheet" href="../stylesheet/extra.css">
+    
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -464,6 +466,29 @@
   
   
     <li class="md-nav__item">
+      <a href="../dsl/data-layer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data Layer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../dsl/ai-functional-layer/" class="md-nav__link">
         
   
@@ -780,23 +805,23 @@
 
 <h2 id="installation">Installation</h2>
 <h3 id="pypi">PyPI</h3>
-<pre><code class="language-bash">pip install agenterprise
-</code></pre>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>agenterprise
+</code></pre></div>
 <h3 id="for-developlment">For developlment</h3>
-<p>Follow these steps to install it from source</p>
-<pre><code class="language-bash">git clone https://github.com/agenterprise/agenterprise.git
-cd agenterprise
-pip install -e .
-</code></pre>
+<p>Follow these steps to install it from source
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/agenterprise/agenterprise.git
+<span class="nb">cd</span><span class="w"> </span>agenterprise
+pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
+</code></pre></div></p>
 <h2 id="usage-example">Usage Example</h2>
 <h3 id="create-a-dsl-file">Create a DSL File</h3>
-<p>You can either start with a DSL File from scratch (see http://www.agenterprise.ai) or generate a sample file with:</p>
-<pre><code class="language-bash">agenterprise --dsl-template --dsl mydsl.dsl     
-</code></pre>
+<p>You can either start with a DSL File from scratch (see http://www.agenterprise.ai) or generate a sample file with:
+<div class="highlight"><pre><span></span><code>agenterprise<span class="w"> </span>--dsl-template<span class="w"> </span>--dsl<span class="w"> </span>mydsl.dsl<span class="w">     </span>
+</code></pre></div></p>
 <h3 id="generate-a-project">Generate a project</h3>
-<p>Whith your created DSL File you can now generate a project:</p>
-<pre><code class="language-bash">agenterprise --code-generation --dsl mydsl.dsl --target target/mydsl
-</code></pre>
+<p>Whith your created DSL File you can now generate a project:
+<div class="highlight"><pre><span></span><code>agenterprise<span class="w"> </span>--code-generation<span class="w"> </span>--dsl<span class="w"> </span>mydsl.dsl<span class="w"> </span>--target<span class="w"> </span>target/mydsl
+</code></pre></div></p>
 
 
 

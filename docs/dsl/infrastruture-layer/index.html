@@ -735,15 +735,15 @@
 <h2 id="llm-large-language-model">LLM (Large Language Model)</h2>
 <p>Example:
 <div class="highlight"><pre><span></span><code>infrastructure {
-    llm &quot;My LLM&quot; {
+   llm &quot;My LLM&quot; {
         uid = aiurn:model:id:geepeetee
         provider = aiurn:model:provider:azure 
         model = &quot;gpt-4o&quot;
         endpoint = &quot;https://any.openai.azure.com/&quot;
         version = &quot;2025-01-01-preview&quot;
-        aiurn:var:temperature = 0.7
-        aiurn:var:costid = &quot;ewe3949&quot; 
-        aiurn:var:hello = True 
+        aiurn:global:var:temperature = 0.7
+        aiurn:global:var:costid = &quot;ewe3949&quot; 
+        aiurn:global:var:hello = True 
     }
 }
 </code></pre></div></p>
@@ -796,8 +796,8 @@
 <td>version = "2025-01-01-preview"</td>
 </tr>
 <tr>
-<td>aiurn:var</td>
-<td>aiurn:var:%VARNAME% = %MY_VALUE"</td>
+<td>aiurn:global:var</td>
+<td>aiurn::globalvar:%VARNAME% = %MY_VALUE"</td>
 <td>add a property to the llm. The parameter names can also overide model options if name is aligned</td>
 <td>0..N</td>
 <td>aiurn:var:temperature = 0.7</td>

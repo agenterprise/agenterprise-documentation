@@ -46,9 +46,9 @@ infrastructure {
         model = "gpt-4o"
         endpoint = "https://any.openai.azure.com/"
         version = "2025-01-01-preview"
-        aiurn:var:temperature = 0.7
-        aiurn:var:costid = "ewe3949" 
-        aiurn:var:hello = True 
+        aiurn:global:var:temperature = 0.7
+        aiurn:global:var:costid = "ewe3949" 
+        aiurn:global:var:hello = True 
     }
 }
 ```
@@ -97,7 +97,7 @@ Defines agents, tools, and their properties, including prompts, references, vari
 
 ```dsl
 functional{
-    agent "Cook" {
+        agent "Cook" {
             uid = aiurn:agent:id:cook
             namespace = aiurn:ns:moewe:kitchen
             systemprompt = "You're a four star rated metre working at restaurant https://moewe.agenterprise.ai/"

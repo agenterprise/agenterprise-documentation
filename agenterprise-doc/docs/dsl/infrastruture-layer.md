@@ -8,15 +8,15 @@ hide:
 Example:
 ```dsl
 infrastructure {
-    llm "My LLM" {
+   llm "My LLM" {
         uid = aiurn:model:id:geepeetee
         provider = aiurn:model:provider:azure 
         model = "gpt-4o"
         endpoint = "https://any.openai.azure.com/"
         version = "2025-01-01-preview"
-        aiurn:var:temperature = 0.7
-        aiurn:var:costid = "ewe3949" 
-        aiurn:var:hello = True 
+        aiurn:global:var:temperature = 0.7
+        aiurn:global:var:costid = "ewe3949" 
+        aiurn:global:var:hello = True 
     }
 }
 ```
@@ -30,4 +30,4 @@ Give the LLM a name by assign a name to tool %MY_NAME% { ... }
 | model | %MODEL_NAME% | specify the given name of the model, recognize this with the selected provider. I.e Azure Foundry uses a custom name for this | 1..1 | model = "gpt-4o"
 | endpoint    | %ENDPOINT% | The endpoint the provider ensures access| 1..1 |  endpoint = "https://any.openai.azure.com/"
 | version   | %VERSION% | a version how to talk to the provider | 1..1  | version = "2025-01-01-preview"
-| aiurn:var | aiurn:var:%VARNAME% = %MY_VALUE"| add a property to the llm. The parameter names can also overide model options if name is aligned | 0..N | aiurn:var:temperature = 0.7
+| aiurn:global:var | aiurn::globalvar:%VARNAME% = %MY_VALUE"| add a property to the llm. The parameter names can also overide model options if name is aligned | 0..N | aiurn:var:temperature = 0.7

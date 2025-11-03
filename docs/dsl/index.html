@@ -673,9 +673,9 @@ Read on at <a href="architecture-layer/">Architecture Layer</a></p>
         model = &quot;gpt-4o&quot;
         endpoint = &quot;https://any.openai.azure.com/&quot;
         version = &quot;2025-01-01-preview&quot;
-        aiurn:var:temperature = 0.7
-        aiurn:var:costid = &quot;ewe3949&quot; 
-        aiurn:var:hello = True 
+        aiurn:global:var:temperature = 0.7
+        aiurn:global:var:costid = &quot;ewe3949&quot; 
+        aiurn:global:var:hello = True 
     }
 }
 </code></pre></div>
@@ -717,7 +717,7 @@ Read on at <a href="data-layer/">Data Layer</a></p>
 <h3 id="24-ai-functional-level">2.4 AI Functional Level</h3>
 <p>Defines agents, tools, and their properties, including prompts, references, variables, and endpoints.</p>
 <div class="highlight"><pre><span></span><code>functional{
-    agent &quot;Cook&quot; {
+        agent &quot;Cook&quot; {
             uid = aiurn:agent:id:cook
             namespace = aiurn:ns:moewe:kitchen
             systemprompt = &quot;You&#39;re a four star rated metre working at restaurant https://moewe.agenterprise.ai/&quot;

@@ -5,6 +5,7 @@
 ```bash
 pip install agenterprise
 ```
+see [PyPi](https://pypi.org/project/agenterprise/)
 
 ### For developlment
 Follow these steps to install it from source

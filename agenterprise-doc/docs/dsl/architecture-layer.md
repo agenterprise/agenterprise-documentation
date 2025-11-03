@@ -9,9 +9,10 @@ Example
 ```dsl
  architecture{
     envid = "fb98001a0ce94c44ad091de3d2e78164"
-    service-techlayer = aiurn:techlayer:local:..:templates:service-layer-fastapi-base
-    ai-techlayer = aiurn:techlayer:local:..:templates:ai-layer-pydanticai
-        
+    service-techlayer = aiurn:techlayer:github:www.github.com:agenterprise:service-layer-fastapi-base
+    ai-techlayer = aiurn:techlayer:github:www.github.com:agenterprise:ai-layer-pydanticai
+    data-techlayer = aiurn:techlayer:github:www.github.com:agenterprise:data-layer-pydantic     
+   
 }
 ```
 ### Specs
@@ -20,7 +21,9 @@ Example
 | --------  | --------   | -------- | -------- | -------- |
 | envid       | %UID% | a unique id as %UID% representing the project | 1..1 | envid = "fb98001a0ce94c44ad091de3d2e78164"
 | service-techlayer | aiurn:techlayer:local:%RELATIVE_LOCAL_PATH% <br/>  aiurn:techlayer:github:%GITHUB_DOMAIN%:%PROFILE%:%TEMPLATE% | <ul><li>set your path %RELATIVE_LOCAL_PATH% in an urn style </li><li> %GITHUB_DOMAIN%:%PROFILE%:%TEMPLATE% specifies a public template to a github project in urn style.</li></ul> | 1..1 | service-techlayer = aiurn:techlayer:local:..:templates:service-layer-fastapi-base <br/> service-techlayer = aiurn:techlayer:github:www.github.com:agenterprise:service-layer-fastapi-base
-| ai-techlayer | aiurn:techlayer:local:%RELATIVE_LOCAL_PATH% <br/>  aiurn:techlayer:github:%GITHUB_DOMAIN%:%PROFILE%:%TEMPLATE% | <ul><li>set your path %RELATIVE_LOCAL_PATH% in an urn style </li><li> %GITHUB_DOMAIN%:%PROFILE%:%TEMPLATE% specifies a public template to a github project in urn style.</li></ul> | 1..1 | service-techlayer = aiurn:techlayer:local:..:templates:ai-layer-pydanticai <br/> service-techlayer = aiurn:techlayer:github:www.github.com:agenterprise:ai-layer-pydanticai
+| ai-techlayer | aiurn:techlayer:local:%RELATIVE_LOCAL_PATH% <br/>  aiurn:techlayer:github:%GITHUB_DOMAIN%:%PROFILE%:%TEMPLATE% | <ul><li>set your path %RELATIVE_LOCAL_PATH% in an urn style </li><li> %GITHUB_DOMAIN%:%PROFILE%:%TEMPLATE% specifies a public template to a github project in urn style.</li></ul> | 1..1 | ai-techlayer = aiurn:techlayer:local:..:templates:ai-layer-pydanticai <br/> service-techlayer = aiurn:techlayer:github:www.github.com:agenterprise:ai-layer-pydanticai
+| data-techlayer | aiurn:techlayer:local:%RELATIVE_LOCAL_PATH% <br/>  aiurn:techlayer:github:%GITHUB_DOMAIN%:%PROFILE%:%TEMPLATE% | <ul><li>set your path %RELATIVE_LOCAL_PATH% in an urn style </li><li> %GITHUB_DOMAIN%:%PROFILE%:%TEMPLATE% specifies a public template to a github project in urn style.</li></ul> | 1..1 | data-techlayer = aiurn:techlayer:local:..:templates:data-layer-pydantic   <br/> service-techlayer = aiurn:techlayer:github:www.github.com:agenterprise:data-layer-pydantic  
+
 
 
 ### Ressources
